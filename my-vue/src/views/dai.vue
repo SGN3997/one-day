@@ -1,7 +1,10 @@
 <template>
   <div class="er">
     <div class="ban">
-      <span v-for="(item,index) in list" :key="index" @click="jia()">{{item.name}}</span>
+      <span v-for="(item,index) in list" :key="index" @click="jia(index)">{{item.name}}</span>
+    </div>
+    <div>
+      <span v-for="(item,index) in getdata" :key='index'>{{item.name}}</span>
     </div>
   </div>
 </template>
@@ -10,6 +13,7 @@
 export default {
   data(){
     return{
+      ind:"",
       getdata:[],
       list:[
         {
@@ -28,9 +32,13 @@ export default {
   methods:{
     newdata(){
       this.$http.get('/api/list').then(res=>{
-        this.getdata=res.data
-        console.log(this.getdata)
+      this.getdata=res.data.data
+      console.log(this.getdata)
       })
+    },
+    jia(index){
+      console.log(index)
+      this.ind=index;
     }
   }
 }
