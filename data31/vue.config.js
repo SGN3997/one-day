@@ -2,7 +2,7 @@ const arr=require('./public/mock/mock')
 
 module.exports={
   lintOnSave:false,
-  devServer:{
+  deServer:{
     before(app){
       app.get('/api/list',(req,res)=>{
         res.json({
